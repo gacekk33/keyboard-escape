@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Escape 2D</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ikona -->
+    <link rel="icon" href="icon.png">
+
+    <!-- Czcionka -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+    <!-- MENU -->
+    <div id="menu">
+
+        <h1>Keyboard Escape 2D</h1>
+
+        <p>Prosta wersja gry.</p>
+
+        <div class="menu-buttons">
+
+            <button id="playBtn">
+                ▶ Graj
+            </button>
+
+            <button id="settingsBtn">
+                ⚙ Ustawienia
+            </button>
+
+            <button id="resetBtn">
+                🗑 Usuń postęp
+            </button>
+
+        </div>
+
+        <div class="player-info">
+
+            <p>Level: <span id="menuLevel">0</span></p>
+
+            <p>XP: <span id="menuXP">0</span></p>
+
+            <p>Winy: <span id="menuWins">0</span></p>
+
+        </div>
+
+    </div>
+
+    <!-- GRA -->
+    <div id="game" style="display:none;">
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+<!------------------------------------------------------>
+<!-- EKRAN GRY -->
+<!------------------------------------------------------>
+
+<div id="game" style="display:none;">
+
+    <!-- GÓRNY HUD -->
+    <header id="hud">
+
+        <div class="hud-left">
+
+            <div class="hud-box">
+                <span>Level</span>
+                <strong id="level">0</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>XP</span>
+                <strong id="xp">0</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>Do następnego</span>
+                <strong id="nextXP">100 XP</strong>
+            </div>
+
+            <div class="hud-box">
+                <span>Winy</span>
+                <strong id="wins">0</strong>
+            </div>
+
+        </div>
+
+        <div class="hud-right">
+
+            <button id="backMenuBtn">
+                🏠 Menu
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- MAPA -->
+    <main id="gameArea">
+
+        <div id="map">
+
+            <!-- Tutaj JavaScript stworzy planszę -->
+
+            <div id="player"></div>
+
+        </div>
+
+    </main>
+
+    <!-- EXIT -->
+    <div id="exitPanel">
+
+        <h2>Exit</h2>
+
+        <p>Wpisz hasło, aby ukończyć poziom.</p>
+
+        <input
+            type="text"
+            id="exitPassword"
+            maxlength="20"
+            placeholder="Hasło..."
+            autocomplete="off"
+        >
+
+        <button id="exitButton">
+            Otwórz Exit
+        </button>
+
+        <p id="exitMessage"></p>
+
+    </div>
+
+</div>
+<!------------------------------------------------------>
+<!-- PANEL ADMINA -->
+<!------------------------------------------------------>
+
+<div id="adminPanel" style="display:none;">
+
+    <div id="adminWindow">
+
+        <h2>🔒 Panel Administratora</h2>
+
+        <!-- Logowanie -->
+        <div id="adminLogin">
+
+            <p>Podaj hasło administratora.</p>
+
+            <input
+                type="password"
+                id="adminPassword"
+                placeholder="Hasło..."
+                autocomplete="off"
+            >
+
+            <button id="adminLoginBtn">
+                Zaloguj
+            </button>
+
+            <p id="adminLoginMessage"></p>
+
+        </div>
+
+        <!-- Panel -->
+        <div id="adminContent" style="display:none;">
+
+            <h3>Admin Abuse</h3>
+
+            <hr>
+
+            <label>Speed Multiplier</label>
+            <input
+                type="number"
+                id="speedMultiplier"
+                value="1"
+                min="1"
+                max="10000"
+            >
+
+            <button id="applySpeedBtn">
+                Ustaw Speed
+            </button>
+
+            <hr>
+
+            <label>Dodaj XP</label>
+            <input type="number" id="addXP" value="0">
+
+            <button id="giveXPBtn">
+                Dodaj XP
+            </button>
+
+            <hr>
+
+            <label>Dodaj Winy</label>
+            <input type="number" id="addWins" value="0">
+
+            <button id="giveWinsBtn">
+                Dodaj Winy
+            </button>
+
+            <hr>
+
+            <label>Ustaw Level</label>
+            <input
+                type="number"
+                id="setLevel"
+                value="0"
+                min="0"
+                max="100"
+            >
+
+            <button id="setLevelBtn">
+                Ustaw Level
+            </button>
+
+            <hr>
+
+            <label>Teleport na Level</label>
+            <input
+                type="number"
+                id="teleportLevel"
+                value="0"
+                min="0"
+                max="100"
+            >
+
+            <button id="teleportBtn">
+                Teleport
+            </button>
+
+            <hr>
+
+            <button id="openExitBtn">
+                Otwórz Exit
+            </button>
+
+            <button id="godModeBtn">
+                God Mode
+            </button>
+
+            <button id="noclipBtn">
+                Noclip
+            </button>
+
+            <button id="resetProgressBtn">
+                Usuń Postęp
+            </button>
+
+            <button id="closeAdminBtn">
+                Zamknij Panel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!------------------------------------------------------>
+<!-- MODALE -->
+<!------------------------------------------------------>
+
+<!-- USTAWIENIA -->
+<div id="settingsModal" class="modal" style="display:none;">
+
+    <div class="modal-content">
+
+        <h2>⚙ Ustawienia</h2>
+
+        <label>
+            Głośność
+        </label>
+
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="100"
+            value="100"
+        >
+
+        <br><br>
+
+        <label>
+            Muzyka
+        </label>
+
+        <input
+            type="checkbox"
+            id="musicEnabled"
+            checked
+        >
+
+        <br><br>
+
+        <label>
+            Efekty dźwiękowe
+        </label>
+
+        <input
+            type="checkbox"
+            id="soundEnabled"
+            checked
+        >
+
+        <br><br>
+
+        <button id="saveSettingsBtn">
+            Zapisz
+        </button>
+
+        <button id="closeSettingsBtn">
+            Zamknij
+        </button>
+
+    </div>
+
+</div>
+
+<!------------------------------------------------------>
+<!-- RESET POSTĘPU -->
+<!------------------------------------------------------>
+
+<div id="resetModal" class="modal" style="display:none;">
+
+    <div class="modal-content">
+
+        <h2>🗑 Usuń postęp</h2>
+
+        <p>
+            Czy na pewno chcesz usunąć cały zapis gry?
+        </p>
+
+        <button id="confirmResetBtn">
+            Tak, usuń
+        </button>
+
+        <button id="cancelResetBtn">
+            Anuluj
+        </button>
+
+    </div>
+
+</div>
+
+<!------------------------------------------------------>
+<!-- KOMUNIKAT -->
+<!------------------------------------------------------>
+
+<div id="messageModal" class="modal" style="display:none;">
+
+    <div class="modal-content">
+
+        <h2 id="messageTitle">
+            Komunikat
+        </h2>
+
+        <p id="messageText">
+            ...
+        </p>
+
+        <button id="closeMessageBtn">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+<!------------------------------------------------------>
+<!-- ŁADOWANIE POZIOMU -->
+<!------------------------------------------------------>
+
+<div id="loadingScreen" style="display:none;">
+
+    <h2>Ładowanie poziomu...</h2>
+
+    <div id="loadingBar">
+
+        <div id="loadingProgress"></div>
+
+    </div>
+
+</div>
+<!------------------------------------------------------>
+<!-- AUDIO -->
+<!------------------------------------------------------>
+
+<audio id="clickSound" preload="auto"></audio>
+<audio id="winSound" preload="auto"></audio>
+<audio id="levelUpSound" preload="auto"></audio>
+<audio id="backgroundMusic" loop></audio>
+
+<!------------------------------------------------------>
+<!-- UKRYTE ELEMENTY -->
+<!------------------------------------------------------>
+
+<!-- Tutaj JavaScript będzie generował poziomy -->
+<div id="levelsContainer" style="display:none;"></div>
+
+<!-- Dane gry -->
+<input type="hidden" id="currentLevel" value="0">
+<input type="hidden" id="currentXP" value="0">
+<input type="hidden" id="currentWins" value="0">
+
+<!------------------------------------------------------>
+<!-- LOADER -->
+<!------------------------------------------------------>
+
+<div id="gameLoader" style="display:none;">
+    <h2>Keyboard Escape 2D</h2>
+    <p>Ładowanie...</p>
+</div>
+
+<!------------------------------------------------------>
+<!-- STOPKA -->
+<!------------------------------------------------------>
+
+<footer id="footer">
+    <p>Keyboard Escape 2D • Wersja Alpha 0.1</p>
+</footer>
+
+<!------------------------------------------------------>
+<!-- SKRYPTY -->
+<!------------------------------------------------------>
+
+<script src="levels.js"></script>
+<script src="save.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
