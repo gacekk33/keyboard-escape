@@ -1,0 +1,2205 @@
+/*==================================================*/
+/* RESET */
+/*==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+/*==================================================*/
+/* BODY */
+/*==================================================*/
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    color:#ffffff;
+
+    background:#111111;
+
+    overflow:hidden;
+
+}
+
+/*==================================================*/
+/* TŁO */
+/*==================================================*/
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(70,120,255,.15),
+    transparent 70%);
+
+    z-index:-1;
+
+}
+
+/*==================================================*/
+/* NAGŁÓWKI */
+/*==================================================*/
+
+h1{
+
+    font-size:48px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+}
+
+h2{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+p{
+
+    font-size:16px;
+
+    color:#d6d6d6;
+
+}
+
+/*==================================================*/
+/* LINKI */
+/*==================================================*/
+
+a{
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    text-decoration:underline;
+
+}
+
+/*==================================================*/
+/* INPUTY */
+/*==================================================*/
+
+input{
+
+    outline:none;
+
+    border:none;
+
+    font-size:16px;
+
+    font-family:inherit;
+
+}
+
+/*==================================================*/
+/* SCROLLBAR */
+/*==================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#1b1b1b;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#4b63ff;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#6f82ff;
+
+}
+/*==================================================*/
+/* MENU GŁÓWNE */
+/*==================================================*/
+
+#menu{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+#menu h1{
+
+    color:#ffffff;
+
+    text-shadow:0 0 15px #4b63ff;
+
+}
+
+#menu p{
+
+    color:#bfbfbf;
+
+    font-size:18px;
+
+}
+
+/*==================================================*/
+/* PRZYCISKI MENU */
+/*==================================================*/
+
+.menu-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-top:20px;
+
+    width:300px;
+
+}
+
+.menu-buttons button{
+
+    width:100%;
+
+    height:55px;
+
+    background:#2d49ff;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.menu-buttons button:hover{
+
+    background:#4760ff;
+
+    transform:scale(1.03);
+
+}
+
+.menu-buttons button:active{
+
+    transform:scale(.98);
+
+}
+
+/*==================================================*/
+/* DANE GRACZA */
+/*==================================================*/
+
+.player-info{
+
+    margin-top:25px;
+
+    width:300px;
+
+    background:#1a1a1a;
+
+    border:2px solid #333;
+
+    border-radius:12px;
+
+    padding:18px;
+
+}
+
+.player-info p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:10px 0;
+
+    font-size:18px;
+
+}
+
+.player-info span{
+
+    color:#6e82ff;
+
+    font-weight:bold;
+
+}
+
+/*==================================================*/
+/* STOPKA MENU */
+/*==================================================*/
+
+#footer{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:15px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+/*==================================================*/
+/* PRZYCISKI */
+/*==================================================*/
+
+button{
+
+    font-family:inherit;
+
+    border:none;
+
+    outline:none;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+}
+
+button:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+/*==================================================*/
+/* PODSTAWOWE STYLE PRZYCISKÓW */
+/*==================================================*/
+
+.btn{
+
+    width:220px;
+
+    height:50px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#ffffff;
+
+    background:#3f5fff;
+
+    box-shadow:0 0 15px rgba(63,95,255,.25);
+
+}
+
+.btn:hover{
+
+    background:#5673ff;
+
+    box-shadow:0 0 20px rgba(63,95,255,.45);
+
+}
+
+/*==================================================*/
+/* KOLORY PRZYCISKÓW */
+/*==================================================*/
+
+.btn-green{
+
+    background:#2dbb55;
+
+}
+
+.btn-green:hover{
+
+    background:#38d163;
+
+}
+
+.btn-red{
+
+    background:#d53d3d;
+
+}
+
+.btn-red:hover{
+
+    background:#ee4f4f;
+
+}
+
+.btn-yellow{
+
+    background:#d6a500;
+
+}
+
+.btn-yellow:hover{
+
+    background:#efbb00;
+
+}
+
+.btn-gray{
+
+    background:#444;
+
+}
+
+.btn-gray:hover{
+
+    background:#5b5b5b;
+
+}
+
+/*==================================================*/
+/* ANIMACJE */
+/*==================================================*/
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes popIn{
+
+    0%{
+
+        transform:scale(.7);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.fadeIn{
+
+    animation:fadeIn .3s ease;
+
+}
+
+.popIn{
+
+    animation:popIn .25s ease;
+
+}
+
+.pulse{
+
+    animation:pulse 1s infinite;
+
+}
+
+/*==================================================*/
+/* EFEKTY */
+/*==================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.glow{
+
+    box-shadow:0 0 20px rgba(75,99,255,.7);
+
+}
+/*==================================================*/
+/* HUD */
+/*==================================================*/
+
+#hud{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:80px;
+
+    background:#1a1a1a;
+
+    border-bottom:2px solid #303030;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    z-index:100;
+
+}
+
+/*==================================================*/
+/* LEWA STRONA HUD */
+/*==================================================*/
+
+.hud-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.hud-box{
+
+    min-width:130px;
+
+    background:#232323;
+
+    border:2px solid #353535;
+
+    border-radius:12px;
+
+    padding:10px 15px;
+
+    text-align:center;
+
+    transition:.2s;
+
+}
+
+.hud-box:hover{
+
+    border-color:#4b63ff;
+
+    box-shadow:0 0 15px rgba(75,99,255,.35);
+
+}
+
+.hud-box span{
+
+    display:block;
+
+    font-size:13px;
+
+    color:#b8b8b8;
+
+    margin-bottom:5px;
+
+}
+
+.hud-box strong{
+
+    font-size:22px;
+
+    color:#ffffff;
+
+}
+
+/*==================================================*/
+/* PRAWA STRONA HUD */
+/*==================================================*/
+
+.hud-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.hud-right button{
+
+    width:140px;
+
+    height:45px;
+
+    background:#3857ff;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.hud-right button:hover{
+
+    background:#5470ff;
+
+}
+
+/*==================================================*/
+/* XP BAR */
+/*==================================================*/
+
+#xpBar{
+
+    width:260px;
+
+    height:18px;
+
+    background:#2c2c2c;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    border:2px solid #3a3a3a;
+
+}
+
+#xpFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#3f5fff,#7d90ff);
+
+    transition:.35s;
+
+}
+
+/*==================================================*/
+/* LEVEL */
+/*==================================================*/
+
+#level{
+
+    color:#ffd54d;
+
+}
+
+#wins{
+
+    color:#65ff88;
+
+}
+
+#xp{
+
+    color:#74a2ff;
+
+}
+
+#nextXP{
+
+    color:#ffb95e;
+
+}
+
+/*==================================================*/
+/* RESPONSYWNOŚĆ HUD */
+/*==================================================*/
+
+@media (max-width:1000px){
+
+    #hud{
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        height:auto;
+
+        padding:15px;
+
+        gap:15px;
+
+    }
+
+    .hud-left{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+}
+/*==================================================*/
+/* GRA */
+/*==================================================*/
+
+#game{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#121212;
+
+    overflow:hidden;
+
+}
+
+/*==================================================*/
+/* OBSZAR GRY */
+/*==================================================*/
+
+#gameArea{
+
+    position:absolute;
+
+    top:80px;
+
+    left:0;
+
+    width:100%;
+
+    height:calc(100% - 80px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*==================================================*/
+/* MAPA */
+/*==================================================*/
+
+#map{
+
+    position:relative;
+
+    width:960px;
+
+    height:640px;
+
+    background:#202020;
+
+    border:4px solid #4b63ff;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+/*==================================================*/
+/* SIATKA MAPY */
+/*==================================================*/
+
+#map::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+
+    background-size:32px 32px;
+
+    pointer-events:none;
+
+}
+
+/*==================================================*/
+/* GRACZ */
+/*==================================================*/
+
+#player{
+
+    position:absolute;
+
+    width:28px;
+
+    height:28px;
+
+    background:#4b63ff;
+
+    border:2px solid #ffffff;
+
+    border-radius:6px;
+
+    left:32px;
+
+    top:32px;
+
+    transition:.05s linear;
+
+    z-index:20;
+
+}
+
+/*==================================================*/
+/* ŚCIANY */
+/*==================================================*/
+
+.wall{
+
+    position:absolute;
+
+    width:32px;
+
+    height:32px;
+
+    background:#555555;
+
+    border:1px solid #777777;
+
+}
+
+/*==================================================*/
+/* PODŁOGA */
+/*==================================================*/
+
+.floor{
+
+    position:absolute;
+
+    width:32px;
+
+    height:32px;
+
+    background:#2a2a2a;
+
+}
+
+/*==================================================*/
+/* EXIT */
+/*==================================================*/
+
+.exit{
+
+    position:absolute;
+
+    width:32px;
+
+    height:32px;
+
+    background:#39d353;
+
+    border:2px solid #ffffff;
+
+    border-radius:4px;
+
+    animation:exitGlow 1.2s infinite;
+
+}
+
+/*==================================================*/
+/* SPAWN */
+/*==================================================*/
+
+.spawn{
+
+    position:absolute;
+
+    width:32px;
+
+    height:32px;
+
+    background:#ffd43b;
+
+    border-radius:4px;
+
+}
+
+/*==================================================*/
+/* ANIMACJA EXIT */
+/*==================================================*/
+
+@keyframes exitGlow{
+
+    0%{
+
+        box-shadow:0 0 5px #39d353;
+
+    }
+
+    50%{
+
+        box-shadow:0 0 20px #39d353;
+
+    }
+
+    100%{
+
+        box-shadow:0 0 5px #39d353;
+
+    }
+
+}
+/*==================================================*/
+/* EXIT PANEL */
+/*==================================================*/
+
+#exitPanel{
+
+    position:absolute;
+
+    right:25px;
+
+    top:110px;
+
+    width:320px;
+
+    background:#1f1f1f;
+
+    border:2px solid #3d3d3d;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    z-index:200;
+
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+
+}
+
+#exitPanel h2{
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+#exitPanel p{
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+}
+
+/*==================================================*/
+/* INPUT HASŁA */
+/*==================================================*/
+
+#exitPassword{
+
+    width:100%;
+
+    height:48px;
+
+    background:#2b2b2b;
+
+    color:#fff;
+
+    border:2px solid #444;
+
+    border-radius:10px;
+
+    padding:0 15px;
+
+    transition:.2s;
+
+}
+
+#exitPassword:focus{
+
+    border-color:#4b63ff;
+
+    box-shadow:0 0 15px rgba(75,99,255,.4);
+
+}
+
+/*==================================================*/
+/* PRZYCISK EXIT */
+/*==================================================*/
+
+#exitButton{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:15px;
+
+    background:#35b84d;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+#exitButton:hover{
+
+    background:#47d662;
+
+    box-shadow:0 0 15px rgba(71,214,98,.4);
+
+}
+
+/*==================================================*/
+/* KOMUNIKAT */
+/*==================================================*/
+
+#exitMessage{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    min-height:22px;
+
+    font-weight:bold;
+
+}
+
+.success{
+
+    color:#4cff72;
+
+}
+
+.error{
+
+    color:#ff5b5b;
+
+}
+
+/*==================================================*/
+/* UKRYTY EXIT */
+/*==================================================*/
+
+.exitLocked{
+
+    filter:grayscale(1);
+
+    opacity:.4;
+
+}
+
+.exitUnlocked{
+
+    filter:none;
+
+    opacity:1;
+
+}
+
+/*==================================================*/
+/* ANIMACJA PANELU */
+/*==================================================*/
+
+@keyframes slideInRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+#exitPanel{
+
+    animation:slideInRight .3s ease;
+
+}
+/*==================================================*/
+/* PANEL ADMINA */
+/*==================================================*/
+
+#adminPanel{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(6px);
+
+    z-index:9999;
+
+}
+
+/*==================================================*/
+/* OKNO PANELU */
+/*==================================================*/
+
+#adminWindow{
+
+    width:550px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#1b1b1b;
+
+    border:2px solid #4b63ff;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    box-shadow:0 0 35px rgba(75,99,255,.4);
+
+    animation:adminOpen .25s ease;
+
+}
+
+#adminWindow h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#ffffff;
+
+}
+
+#adminWindow h3{
+
+    margin:15px 0;
+
+    color:#4b63ff;
+
+}
+
+#adminWindow hr{
+
+    border:none;
+
+    border-top:1px solid #333;
+
+    margin:18px 0;
+
+}
+
+/*==================================================*/
+/* LOGOWANIE */
+/*==================================================*/
+
+#adminLogin{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+#adminPassword{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 15px;
+
+    border:2px solid #3b3b3b;
+
+    border-radius:10px;
+
+    background:#2a2a2a;
+
+    color:white;
+
+}
+
+#adminPassword:focus{
+
+    border-color:#4b63ff;
+
+}
+
+#adminLoginBtn{
+
+    height:48px;
+
+    border-radius:10px;
+
+    background:#4b63ff;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+}
+
+#adminLoginBtn:hover{
+
+    background:#6178ff;
+
+}
+
+/*==================================================*/
+/* PANEL GŁÓWNY */
+/*==================================================*/
+
+#adminContent{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+#adminContent label{
+
+    font-weight:bold;
+
+    color:#dddddd;
+
+}
+
+#adminContent input{
+
+    width:100%;
+
+    height:45px;
+
+    padding:0 12px;
+
+    border-radius:10px;
+
+    background:#2b2b2b;
+
+    border:2px solid #3a3a3a;
+
+    color:white;
+
+}
+
+#adminContent input:focus{
+
+    border-color:#4b63ff;
+
+}
+
+/*==================================================*/
+/* PRZYCISKI ADMINA */
+/*==================================================*/
+
+#adminContent button{
+
+    width:100%;
+
+    height:48px;
+
+    border-radius:10px;
+
+    background:#3f5fff;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+}
+
+#adminContent button:hover{
+
+    background:#5973ff;
+
+}
+
+/*==================================================*/
+/* RESET */
+/*==================================================*/
+
+#resetProgressBtn{
+
+    background:#d63b3b !important;
+
+}
+
+#resetProgressBtn:hover{
+
+    background:#f04d4d !important;
+
+}
+
+/*==================================================*/
+/* ZAMKNIJ */
+/*==================================================*/
+
+#closeAdminBtn{
+
+    background:#555 !important;
+
+}
+
+#closeAdminBtn:hover{
+
+    background:#707070 !important;
+
+}
+
+/*==================================================*/
+/* ANIMACJA */
+/*==================================================*/
+
+@keyframes adminOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+/*==================================================*/
+/* MODALE */
+/*==================================================*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(5px);
+
+    z-index:9998;
+
+    animation:fadeModal .2s ease;
+
+}
+
+.modal-content{
+
+    width:450px;
+
+    max-width:90%;
+
+    background:#1d1d1d;
+
+    border:2px solid #4b63ff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 0 25px rgba(75,99,255,.35);
+
+    animation:popModal .2s ease;
+
+}
+
+.modal-content h2{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#ffffff;
+
+}
+
+.modal-content p{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#d0d0d0;
+
+}
+
+.modal-content label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ffffff;
+
+    font-weight:bold;
+
+}
+
+.modal-content input{
+
+    width:100%;
+
+    height:45px;
+
+    background:#2a2a2a;
+
+    border:2px solid #3b3b3b;
+
+    border-radius:10px;
+
+    color:white;
+
+    padding:0 12px;
+
+    margin-bottom:15px;
+
+}
+
+.modal-content input:focus{
+
+    border-color:#4b63ff;
+
+}
+
+/*==================================================*/
+/* SUWAK */
+/*==================================================*/
+
+input[type="range"]{
+
+    width:100%;
+
+    cursor:pointer;
+
+}
+
+/*==================================================*/
+/* CHECKBOXY */
+/*==================================================*/
+
+input[type="checkbox"]{
+
+    width:20px;
+
+    height:20px;
+
+    cursor:pointer;
+
+}
+
+/*==================================================*/
+/* PRZYCISKI W MODALACH */
+/*==================================================*/
+
+.modal-content button{
+
+    width:100%;
+
+    height:46px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#4b63ff;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.modal-content button:hover{
+
+    background:#6880ff;
+
+}
+
+#confirmResetBtn{
+
+    background:#d63d3d;
+
+}
+
+#confirmResetBtn:hover{
+
+    background:#ef5151;
+
+}
+
+#cancelResetBtn{
+
+    background:#555555;
+
+}
+
+#cancelResetBtn:hover{
+
+    background:#707070;
+
+}
+
+/*==================================================*/
+/* LOADING SCREEN */
+/*==================================================*/
+
+#loadingScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    background:#111111;
+
+    z-index:10000;
+
+}
+
+#loadingBar{
+
+    width:450px;
+
+    height:24px;
+
+    background:#2d2d2d;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+#loadingProgress{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(90deg,#4b63ff,#86a1ff);
+
+    transition:.2s;
+
+}
+
+/*==================================================*/
+/* ANIMACJE */
+/*==================================================*/
+
+@keyframes fadeModal{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes popModal{
+
+    from{
+
+        transform:scale(.9);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+/*==================================================*/
+/* GAME LOADER */
+/*==================================================*/
+
+#gameLoader{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    gap:25px;
+
+    background:#101010;
+
+    z-index:99999;
+
+}
+
+#gameLoader h2{
+
+    font-size:42px;
+
+    color:#ffffff;
+
+    text-shadow:0 0 15px #4b63ff;
+
+}
+
+#gameLoader p{
+
+    font-size:18px;
+
+    color:#bfbfbf;
+
+}
+
+/*==================================================*/
+/* LOADER SPINNER */
+/*==================================================*/
+
+.loader{
+
+    width:75px;
+
+    height:75px;
+
+    border:8px solid #2d2d2d;
+
+    border-top:8px solid #4b63ff;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*==================================================*/
+/* STOPKA */
+/*==================================================*/
+
+#footer{
+
+    position:fixed;
+
+    left:0;
+
+    bottom:10px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#7a7a7a;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    pointer-events:none;
+
+}
+
+/*==================================================*/
+/* EFEKTY POZIOMU */
+/*==================================================*/
+
+.levelComplete{
+
+    animation:levelComplete .8s ease;
+
+}
+
+@keyframes levelComplete{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.levelUp{
+
+    animation:levelUp .6s ease;
+
+}
+
+@keyframes levelUp{
+
+    0%{
+
+        transform:scale(.8);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/*==================================================*/
+/* POWIADOMIENIA */
+/*==================================================*/
+
+.notification{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    min-width:280px;
+
+    padding:15px 20px;
+
+    border-radius:10px;
+
+    background:#232323;
+
+    color:white;
+
+    border-left:5px solid #4b63ff;
+
+    box-shadow:0 0 15px rgba(0,0,0,.4);
+
+    animation:notificationShow .25s ease;
+
+    z-index:9999;
+
+}
+
+.notification.success{
+
+    border-left-color:#39d353;
+
+}
+
+.notification.error{
+
+    border-left-color:#ff4b4b;
+
+}
+
+.notification.warning{
+
+    border-left-color:#ffc107;
+
+}
+
+@keyframes notificationShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*==================================================*/
+/* EKRAN WYGRANEJ */
+/*==================================================*/
+
+#winScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    background:rgba(0,0,0,.85);
+
+    z-index:99990;
+
+}
+
+#winScreen h1{
+
+    font-size:60px;
+
+    color:#39d353;
+
+    margin-bottom:15px;
+
+}
+
+#winScreen p{
+
+    font-size:22px;
+
+    color:#ffffff;
+
+}
+/*==================================================*/
+/* RESPONSYWNOŚĆ */
+/*==================================================*/
+
+@media (max-width:1200px){
+
+    #map{
+
+        transform:scale(.9);
+
+    }
+
+}
+
+@media (max-width:1000px){
+
+    #map{
+
+        transform:scale(.75);
+
+    }
+
+}
+
+@media (max-width:800px){
+
+    #map{
+
+        transform:scale(.6);
+
+    }
+
+}
+
+@media (max-width:650px){
+
+    #map{
+
+        transform:scale(.5);
+
+    }
+
+}
+
+/*==================================================*/
+/* WYŁĄCZENIE ZAZNACZANIA */
+/*==================================================*/
+
+img{
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    pointer-events:none;
+
+}
+
+canvas{
+
+    image-rendering:pixelated;
+
+    image-rendering:crisp-edges;
+
+}
+
+/*==================================================*/
+/* PŁYNNE ANIMACJE */
+/*==================================================*/
+
+*{
+
+    transition:
+    background-color .2s,
+    color .2s,
+    border-color .2s,
+    box-shadow .2s;
+
+}
+
+/*==================================================*/
+/* KLASY POMOCNICZE */
+/*==================================================*/
+
+.hide{
+
+    display:none !important;
+
+}
+
+.show{
+
+    display:flex !important;
+
+}
+
+.invisible{
+
+    visibility:hidden;
+
+}
+
+.visible{
+
+    visibility:visible;
+
+}
+
+.opacity0{
+
+    opacity:0;
+
+}
+
+.opacity100{
+
+    opacity:1;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.flex{
+
+    display:flex;
+
+}
+
+.column{
+
+    flex-direction:column;
+
+}
+
+.row{
+
+    flex-direction:row;
+
+}
+
+.justify-center{
+
+    justify-content:center;
+
+}
+
+.align-center{
+
+    align-items:center;
+
+}
+
+/*==================================================*/
+/* WYŁĄCZENIE OBRAMOWANIA */
+/*==================================================*/
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+}
+
+/*==================================================*/
+/* ZABEZPIECZENIA */
+/*==================================================*/
+
+body.loading{
+
+    pointer-events:none;
+
+}
+
+body.loading #gameLoader{
+
+    display:flex;
+
+}
+
+/*==================================================*/
+/* SELEKCJA TEKSTU */
+/*==================================================*/
+
+::selection{
+
+    background:#4b63ff;
+
+    color:#ffffff;
+
+}
+
+/*==================================================*/
+/* KONIEC STYLE.CSS */
+/*==================================================*/
